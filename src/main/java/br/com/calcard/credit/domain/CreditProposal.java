@@ -2,8 +2,17 @@ package br.com.calcard.credit.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CreditProposal {
 
+	private Long id;
 	private String name;
 	private String cpf;
 	private Integer age;
@@ -12,6 +21,16 @@ public class CreditProposal {
 	private String state;
 	private Integer numberOfDependent;
 	private BigDecimal income;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -37,6 +56,7 @@ public class CreditProposal {
 		this.age = age;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public Gender getGender() {
 		return gender;
 	}
@@ -45,6 +65,7 @@ public class CreditProposal {
 		this.gender = gender;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public MaritalStatus getMaritalStatus() {
 		return maritalStatus;
 	}
