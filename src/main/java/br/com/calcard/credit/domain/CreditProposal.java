@@ -8,6 +8,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class CreditProposal {
@@ -32,6 +37,7 @@ public class CreditProposal {
 		this.id = id;
 	}
 
+	@NotBlank
 	public String getName() {
 		return name;
 	}
@@ -40,6 +46,7 @@ public class CreditProposal {
 		this.name = name;
 	}
 
+	@NotBlank
 	public String getCpf() {
 		return cpf;
 	}
@@ -90,6 +97,8 @@ public class CreditProposal {
 		this.numberOfDependent = numberOfDependent;
 	}
 
+	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getIncome() {
 		return income;
 	}

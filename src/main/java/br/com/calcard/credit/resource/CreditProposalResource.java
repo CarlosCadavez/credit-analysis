@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,7 @@ public class CreditProposalResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<List<CreditProposal>> addCreditPropose(@RequestBody CreditProposal creditPropose) throws URISyntaxException {
+	public ResponseEntity<List<CreditProposal>> addCreditPropose(@Valid @RequestBody CreditProposal creditPropose) throws URISyntaxException {
 		CreditProposal creditProposal = creditProposalService.addCreditProposal(creditPropose);
 		
 		URI uri = ServletUriComponentsBuilder
