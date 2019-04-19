@@ -18,7 +18,8 @@ public class CreditProposalService {
 		CreditProposal creditProposal = creditProposals.findByCpf(cpf);
 		
 		if (creditProposal == null) {
-			throw new CreditProposeNotFoundedException("Credit propose not founded");
+			String message = String.format("Credit propose not founded for cpf: %s", cpf);
+			throw new CreditProposeNotFoundedException(message);
 		}
 		
 		return creditProposal;
