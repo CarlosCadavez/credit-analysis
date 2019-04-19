@@ -18,7 +18,7 @@ public class CreditProposalService {
 		CreditProposal creditProposal = creditProposals.findByCpf(cpf);
 		
 		if (creditProposal == null) {
-			throw new CreditProposeNotFoundedException("Object not founded");
+			throw new CreditProposeNotFoundedException("Credit propose not founded");
 		}
 		
 		return creditProposal;
