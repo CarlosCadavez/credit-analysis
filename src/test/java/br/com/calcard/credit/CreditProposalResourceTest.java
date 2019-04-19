@@ -2,6 +2,7 @@ package br.com.calcard.credit;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -82,6 +83,13 @@ public class CreditProposalResourceTest {
 		mockMvc
 		.perform(get(fullUriToResource))
 		.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void should_create_a_new_credit_propose_returning_status_code_201() throws Exception {
+		mockMvc
+		.perform(post(PATH_TO_RESOURCE_TEST))
+		.andExpect(status().isCreated());
 	}
 
 	private String transformListToJson(List<CreditProposal> listCreditProposal) throws JsonProcessingException {
