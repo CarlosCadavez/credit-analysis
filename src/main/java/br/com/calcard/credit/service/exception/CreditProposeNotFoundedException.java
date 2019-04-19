@@ -1,14 +1,14 @@
 package br.com.calcard.credit.service.exception;
 
-public class ObjectResponseNotFounded extends RuntimeException {
+public class CreditProposeNotFoundedException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 	
-	public ObjectResponseNotFounded(String message) {
+	public CreditProposeNotFoundedException(String message) {
 		super(message);
 	}
 	
-	public ObjectResponseNotFounded(String message, Throwable cause) {
+	public CreditProposeNotFoundedException(String message, Throwable cause) {
 		super(message, cause);
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.calcard.credit.domain.CreditProposal;
 import br.com.calcard.credit.repository.CreditProposals;
-import br.com.calcard.credit.service.exception.ObjectResponseNotFounded;
+import br.com.calcard.credit.service.exception.CreditProposeNotFoundedException;
 
 @Service
 public class CreditProposalService {
@@ -18,7 +18,7 @@ public class CreditProposalService {
 		CreditProposal creditProposal = creditProposals.findByCpf(cpf);
 		
 		if (creditProposal == null) {
-			throw new ObjectResponseNotFounded("Object not founded");
+			throw new CreditProposeNotFoundedException("Object not founded");
 		}
 		
 		return creditProposal;

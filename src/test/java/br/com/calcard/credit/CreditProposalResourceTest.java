@@ -23,7 +23,7 @@ import br.com.calcard.credit.domain.CreditProposal;
 import br.com.calcard.credit.repository.CreditProposals;
 import br.com.calcard.credit.resource.CreditProposalResource;
 import br.com.calcard.credit.service.CreditProposalService;
-import br.com.calcard.credit.service.exception.ObjectResponseNotFounded;
+import br.com.calcard.credit.service.exception.CreditProposeNotFoundedException;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = CreditProposalResource.class)
@@ -60,7 +60,7 @@ public class CreditProposalResourceTest {
 	}
 	
 	@Test
-	public void should_return_a_credit_propose_by_cpf_number() throws Exception {
+	public void should_return_a_credit_propose_by_cpf_number_with_status_code_200() throws Exception {
 		String fullUriToResource = CreditProposalResourceTest.PATH_TO_RESOURCE_TEST + "/56854401038";
 		CreditProposal oneCreditProposal = new CreditProposeFakeObject().oneCreditProposal();
 		
@@ -77,7 +77,7 @@ public class CreditProposalResourceTest {
 		String fullUriToResource = CreditProposalResourceTest.PATH_TO_RESOURCE_TEST + "/56854401038";
 		
 		when(creditProposalService.findByCpf(Mockito.anyString()))
-		.thenThrow(new ObjectResponseNotFounded("Object not founded"));
+		.thenThrow(new CreditProposeNotFoundedException("Object not founded"));
 		
 		mockMvc
 		.perform(get(fullUriToResource))

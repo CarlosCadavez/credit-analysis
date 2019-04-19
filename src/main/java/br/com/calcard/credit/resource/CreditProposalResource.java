@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.calcard.credit.domain.CreditProposal;
 import br.com.calcard.credit.repository.CreditProposals;
 import br.com.calcard.credit.service.CreditProposalService;
-import br.com.calcard.credit.service.exception.ObjectResponseNotFounded;
+import br.com.calcard.credit.service.exception.CreditProposeNotFoundedException;
 
 @RestController
 @RequestMapping(CreditProposalResource.PATH_RESOURCE)
@@ -33,11 +33,7 @@ public class CreditProposalResource {
 	
 	@GetMapping(value = "/{cpf}")
 	public ResponseEntity<CreditProposal> creditProposalById(@PathVariable("cpf") String cpf) {
-		try {
-			return ResponseEntity.ok(creditProposalService.findByCpf(cpf));
-		} catch (ObjectResponseNotFounded e) {
-			return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(creditProposalService.findByCpf(cpf));
 		
 	}
 
