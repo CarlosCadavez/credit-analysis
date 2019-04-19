@@ -10,21 +10,21 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.com.calcard.credit.resource.ContractResource;
+import br.com.calcard.credit.resource.CreditProposalResource;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = ContractResource.class)
-public class ContractResourceTest {
+@WebMvcTest(value = CreditProposalResource.class)
+public class CreditProposalResourceTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
-	private static final String PATH_TO_RESOURCE_TEST = ContractResource.PATH_RESOURCE;
+	private static final String PATH_TO_RESOURCE_TEST = CreditProposalResource.PATH_RESOURCE;
 	
 	@Test
-	public void should_return_status_code_200_when_request_return_a_empty_list_of_contract() throws Exception {
+	public void should_return_status_code_200_when_request_return_a_empty_list_of_credit_proposal() throws Exception {
 		mockMvc
-		.perform(get(ContractResourceTest.PATH_TO_RESOURCE_TEST))
+		.perform(get(CreditProposalResourceTest.PATH_TO_RESOURCE_TEST))
 		.andExpect(status().isOk());
 	}
 
