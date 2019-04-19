@@ -66,6 +66,17 @@ public class CreditProposalResourceTest {
 		.andExpect(status().isOk())
 		.andExpect(content().json(transformObjectToJson(oneCreditProposal)));
 	}
+	
+	@Test
+	public void should_return_status_code_404_when_request_doesnt_find_a_credit_propose_by_id() throws Exception {
+		String fullUriToResource = CreditProposalResourceTest.PATH_TO_RESOURCE_TEST + "/56854401038";
+		
+		when(creditProposals.findByCpf(Mockito.anyString())).thenReturn(null);
+		
+		mockMvc
+		.perform(get(fullUriToResource))
+		.andExpect(status().isNotFound());
+	}
 
 	private String transformListToJson(List<CreditProposal> listCreditProposal) throws JsonProcessingException {
 		return new ObjectMapper()
