@@ -14,7 +14,7 @@ import br.com.calcard.credit.domain.CreditProposal;
 @RequestMapping(CreditProposalResource.PATH_RESOURCE)
 public class CreditProposalResource {
 	
-	public static final String PATH_RESOURCE = "/contracts";
+	public static final String PATH_RESOURCE = "/credit-proposals";
 	
 	@GetMapping
 	public ResponseEntity<List<CreditProposal>> allContracts() {
