@@ -22,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.calcard.credit.domain.CreditProposal;
 import br.com.calcard.credit.repository.CreditProposals;
 import br.com.calcard.credit.resource.CreditProposalResource;
+import br.com.calcard.credit.service.CreditProposalService;
+import br.com.calcard.credit.service.exception.ObjectResponseNotFounded;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = CreditProposalResource.class)
@@ -32,6 +34,9 @@ public class CreditProposalResourceTest {
 	
 	@MockBean
 	private CreditProposals creditProposals;
+	
+	@MockBean
+	private CreditProposalService creditProposalService;
 	
 	private static final String PATH_TO_RESOURCE_TEST = CreditProposalResource.PATH_RESOURCE;
 	
@@ -59,7 +64,7 @@ public class CreditProposalResourceTest {
 		String fullUriToResource = CreditProposalResourceTest.PATH_TO_RESOURCE_TEST + "/56854401038";
 		CreditProposal oneCreditProposal = new CreditProposeFakeObject().oneCreditProposal();
 		
-		when(creditProposals.findByCpf(Mockito.anyString())).thenReturn(oneCreditProposal);
+		when(creditProposalService.findByCpf(Mockito.anyString())).thenReturn(oneCreditProposal);
 		
 		mockMvc
 		.perform(get(fullUriToResource))
@@ -71,7 +76,8 @@ public class CreditProposalResourceTest {
 	public void should_return_status_code_404_when_request_doesnt_find_a_credit_propose_by_id() throws Exception {
 		String fullUriToResource = CreditProposalResourceTest.PATH_TO_RESOURCE_TEST + "/56854401038";
 		
-		when(creditProposals.findByCpf(Mockito.anyString())).thenReturn(null);
+		when(creditProposalService.findByCpf(Mockito.anyString()))
+		.thenThrow(new ObjectResponseNotFounded("Object not founded"));
 		
 		mockMvc
 		.perform(get(fullUriToResource))
