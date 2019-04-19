@@ -25,4 +25,8 @@ public class CreditProposalService {
 		return creditProposal;
 	}
 
+	public CreditProposal addCreditProposal(CreditProposal creditProposal) {
+		return creditProposals.save(creditProposal);
+	}
+
 }

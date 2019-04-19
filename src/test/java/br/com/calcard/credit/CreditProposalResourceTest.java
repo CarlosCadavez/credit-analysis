@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -87,9 +88,14 @@ public class CreditProposalResourceTest {
 	
 	@Test
 	public void should_create_a_new_credit_propose_returning_status_code_201() throws Exception {
+		when(creditProposalService.addCreditProposal(Mockito.any(CreditProposal.class))).thenReturn(new CreditProposal());
+		
 		mockMvc
-		.perform(post(PATH_TO_RESOURCE_TEST))
+		.perform(post(PATH_TO_RESOURCE_TEST)
+		.contentType(MediaType.APPLICATION_JSON)
+		.content(transformObjectToJson(new CreditProposal())))
 		.andExpect(status().isCreated());
+		
 	}
 
 	private String transformListToJson(List<CreditProposal> listCreditProposal) throws JsonProcessingException {

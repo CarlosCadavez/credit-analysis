@@ -42,7 +42,7 @@ public class CreditProposalResource {
 	
 	@PostMapping
 	public ResponseEntity<List<CreditProposal>> addCreditPropose(@RequestBody CreditProposal creditPropose) throws URISyntaxException {
-		CreditProposal creditProposal = creditProposals.save(creditPropose);
+		CreditProposal creditProposal = creditProposalService.addCreditProposal(creditPropose);
 		
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest()
