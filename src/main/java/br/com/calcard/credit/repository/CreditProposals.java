@@ -6,4 +6,6 @@ import br.com.calcard.credit.domain.CreditProposal;
 
 public interface CreditProposals extends JpaRepository<CreditProposal, Long> {
 
+	CreditProposal findByCpf(String cpf);
+
 }
