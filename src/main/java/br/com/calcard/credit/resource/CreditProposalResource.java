@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,7 @@ public class CreditProposalResource {
 	private CreditProposalService creditProposalService;
 	
 	@GetMapping
+	@CrossOrigin
 	public ResponseEntity<List<CreditProposal>> allCreditProposal() {
 		return ResponseEntity.ok(creditProposals.findAll());
 	}
@@ -43,6 +45,7 @@ public class CreditProposalResource {
 	}
 	
 	@PostMapping
+	@CrossOrigin
 	public ResponseEntity<List<CreditProposal>> addCreditPropose(@Valid @RequestBody CreditProposal creditPropose) throws URISyntaxException {
 		CreditProposal creditProposal = creditProposalService.addCreditProposal(creditPropose);
 		
