@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.calcard.credit.domain.CreditProposal;
 import br.com.calcard.credit.repository.CreditProposals;
+import br.com.calcard.credit.repository.dto.CreditProposalDTO;
 import br.com.calcard.credit.service.CreditProposalService;
 
 @RestController
@@ -35,8 +36,8 @@ public class CreditProposalResource {
 	
 	@GetMapping
 	@CrossOrigin
-	public ResponseEntity<List<CreditProposal>> allCreditProposal() {
-		return ResponseEntity.ok(creditProposals.findAll());
+	public ResponseEntity<List<CreditProposalDTO>> allCreditProposal() {
+		return ResponseEntity.ok(creditProposals.findAllAsDto());
 	}
 	
 	@GetMapping(value = "/{cpf}")

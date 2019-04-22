@@ -24,6 +24,7 @@ public class CreditProposal {
 	private String state;
 	private Integer numberOfDependent;
 	private BigDecimal income;
+	private StatusAnalysis statusAnalysis;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -103,6 +104,15 @@ public class CreditProposal {
 
 	public void setIncome(BigDecimal income) {
 		this.income = income;
+	}
+
+	@Enumerated(EnumType.STRING)
+	public StatusAnalysis getStatusAnalysis() {
+		return statusAnalysis;
+	}
+
+	public void setStatusAnalysis(StatusAnalysis statusAnalysis) {
+		this.statusAnalysis = statusAnalysis;
 	}
 
 }

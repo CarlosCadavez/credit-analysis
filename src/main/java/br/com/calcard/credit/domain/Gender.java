@@ -2,8 +2,8 @@ package br.com.calcard.credit.domain;
 
 public enum Gender {
 	
-	MALE("Masculino"),
-	FEMALE("Feminino");
+	MALE("M"),
+	FEMALE("F");
 	
 	private String genderDescription;
 	

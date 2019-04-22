@@ -2,10 +2,10 @@ package br.com.calcard.credit.domain;
 
 public enum MaritalStatus {
 	
-	MARRIED("Casado(a)"),
-	SINGLE("Solteiro(a)"),
-	DIVORCED("Divorciado(a)"),
-	WIDOWED("Viúvo(a)");
+	MARRIED("Casada(o)"),
+	SINGLE("Solteira(o)"),
+	DIVORCED("Divorciada(o)"),
+	WIDOWED("Viúva(o)");
 	
 	private String relationship;
 	
