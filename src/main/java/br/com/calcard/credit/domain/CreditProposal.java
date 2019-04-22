@@ -12,8 +12,10 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.calcard.credit.analysis.SendableData;
+
 @Entity
-public class CreditProposal {
+public class CreditProposal implements SendableData {
 
 	private Long id;
 	private String name;
@@ -25,6 +27,7 @@ public class CreditProposal {
 	private Integer numberOfDependent;
 	private BigDecimal income;
 	private StatusAnalysis statusAnalysis;
+	private String messageAnalysis;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -113,6 +116,14 @@ public class CreditProposal {
 
 	public void setStatusAnalysis(StatusAnalysis statusAnalysis) {
 		this.statusAnalysis = statusAnalysis;
+	}
+
+	public String getMessageAnalysis() {
+		return messageAnalysis;
+	}
+
+	public void setMessageAnalysis(String messageAnalysis) {
+		this.messageAnalysis = messageAnalysis;
 	}
 
 }

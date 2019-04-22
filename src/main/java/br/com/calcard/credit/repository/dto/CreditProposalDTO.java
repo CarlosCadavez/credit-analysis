@@ -9,7 +9,7 @@ import br.com.calcard.credit.domain.StatusAnalysis;
 public class CreditProposalDTO {
 
 	public CreditProposalDTO(String name, Integer age, Gender gender, MaritalStatus maritalStatus, String state,
-			Integer numberOfDependent, BigDecimal income, StatusAnalysis statusAnalysis) {
+			Integer numberOfDependent, BigDecimal income, StatusAnalysis statusAnalysis, String messageAnalysis) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -18,6 +18,7 @@ public class CreditProposalDTO {
 		this.numberOfDependent = numberOfDependent;
 		this.income = income;
 		this.statusAnalysis = statusAnalysis;
+		this.messageAnalysis = messageAnalysis;
 	}
 
 	private String name;
@@ -28,6 +29,7 @@ public class CreditProposalDTO {
 	private Integer numberOfDependent;
 	private BigDecimal income;
 	private StatusAnalysis statusAnalysis;
+	private String messageAnalysis;
 
 	public String getName() {
 		return name;
@@ -59,6 +61,10 @@ public class CreditProposalDTO {
 
 	public String getStatusAnalysis() {
 		return statusAnalysis.getGenderDescription();
+	}
+
+	public String getMessageAnalysis() {
+		return messageAnalysis;
 	}
 	
 }
